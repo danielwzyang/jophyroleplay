@@ -1,6 +1,4 @@
-// Collaborators:
-
-import java.util.Random;
+// Collaborators: Daniel Yang and Jophy Wang
 
 public abstract class Adventurer {
     private String name;
@@ -51,7 +49,7 @@ public abstract class Adventurer {
      * support their allys
      */
     // hurt or hinder the target adventurer
-    public abstract String attack(Adventurer other);
+    public abstract String attack(String attack, Adventurer other);
 
     // heall or buff the target adventurer
     public abstract String support(Adventurer other);
