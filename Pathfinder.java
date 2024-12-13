@@ -1,27 +1,21 @@
-import java.util.HashMap;
-
 public class Pathfinder extends Adventurer {
-    private String special;
+    private int special;
     private int specialCount;
     private int specialMax;
-    private HashMap<String, Integer> attacks;
-    private final int support = 50;
+    private int attack;
+    private int support;
 
-    public Pathfinder(String name, int hp, HashMap<String, Integer> attacks, String special, int specialCount) {
+    public Pathfinder(String name, int hp, int attack, int special, int specialCount, int support) {
         super(name, hp);
+        this.attack = attack;
         this.special = special;
         this.specialCount = specialCount;
-        this.attacks = attacks;
-        specialMax = 10;
+        specialMax = specialCount;
+        this.support = support;
     }
-
-    // USE THIS WHEN WE'RE IN THE CONSOLE SO THE INPUT WILL REPEAT UNTIL A VALID ATTACK IS CHOSEN
-    public boolean attackExists(String attack) {
-        return attacks.containsKey(attack);
-    }
-
+    
     public String getSpecialName() {
-        return special;
+        return "Super Move";
     }
 
     public int getSpecial() {
@@ -37,23 +31,31 @@ public class Pathfinder extends Adventurer {
         return specialMax;
     }
     
-    public String attack(Adventurer other, String attack) {
-        // assume attack is valid
+    public int getAttack() {
+        return attack;
+    }
 
-        int damage = attacks.get(attack);
-        other.applyDamage(damage);
-        return "You attacked " + other.getName() + " for " + damage + " damage!";
+    public String attack(Adventurer other) {
+        other.applyDamage(attack);
+        return "You attacked " + other.getName() + " for " + attack + " damage!";
     }
 
     public String support(Adventurer other) {
-
+        other.heal(support);
+        return "You healed " + other.getName() + " for " + support + " health!";
     }
 
     public String support() {
-
+        heal(support);
+        return "You healed yourself for " + support + " health!";
     }
 
     public String specialAttack(Adventurer other) {
-
+        if (specialCount <= 0 )
+            return "You have no more special attacks!";
+        
+        specialCount--;
+        other.applyDamage(special);
+        return "You attacked " + other.getName() + " for " + special + " damage!";
     }
 }

@@ -49,7 +49,7 @@ public abstract class Adventurer {
      * support their allys
      */
     // hurt or hinder the target adventurer
-    public abstract String attack(String attack, Adventurer other);
+    public abstract String attack(Adventurer other);
 
     // heall or buff the target adventurer
     public abstract String support(Adventurer other);
@@ -96,5 +96,9 @@ public abstract class Adventurer {
 
     public void setName(String s) {
         this.name = s;
+    }
+
+    public void heal(int hp) {
+        this.HP = Math.min(this.HP + hp, maxHP);
     }
 }

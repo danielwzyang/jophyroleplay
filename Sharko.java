@@ -1,17 +1,12 @@
-public class Sharko extends Pathfinder {
+public class Sharko extends Pathfinder { 
+    // Tank
 
-    private boolean corrupted;
-
-    public Sharko(String name, int hp, boolean corrupted) {
-        super(name, hp);
-        this.corrupted = corrupted;
+    public Sharko() {
+        super("Sharko", 250, 10, 30, 1, 5);
     }
 
     public String getSpecialName() {
-        return "Calabash";
+        return "Needle Shot";
     }
-
-    public 
-    
 
 }
