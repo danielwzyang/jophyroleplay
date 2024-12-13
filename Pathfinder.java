@@ -19,6 +19,10 @@ public class Pathfinder extends Adventurer {
     }
 
     public int getSpecial() {
+        return special;
+    }
+
+    public int getSpecialCount() {
         return specialCount;
     }
 
@@ -37,25 +41,26 @@ public class Pathfinder extends Adventurer {
 
     public String attack(Adventurer other) {
         other.applyDamage(attack);
-        return "You attacked " + other.getName() + " for " + attack + " damage!";
+        return "\u001b[33m" + getName() + " \u001b[37mdid \u001b[31m" + attack + " damage \u001b[37mto \u001b[35m" + other.getName() + "!" + "\u001b[37m";
+    }
+
+    public int getSupport() {
+        return support;
     }
 
     public String support(Adventurer other) {
         other.heal(support);
-        return "You healed " + other.getName() + " for " + support + " health!";
+        return "\u001b[33m" + getName() + " \u001b[37mhealed \u001b[33m" + other.getName() + " \u001b[37mfor \u001b[33m" + support + " \u001b[37mhealth!";
     }
 
     public String support() {
         heal(support);
-        return "You healed yourself for " + support + " health!";
+        return "\u001b[33m" + getName() + " \u001b[37mhealed \u001b[33mitself \u001b[37mfor \u001b[32m" + support + " \u001b[37mhealth!";
     }
 
     public String specialAttack(Adventurer other) {
-        if (specialCount <= 0 )
-            return "You have no more special attacks!";
-        
         specialCount--;
         other.applyDamage(special);
-        return "You attacked " + other.getName() + " for " + special + " damage!";
+        return "\u001b[33m" + getName() + " \u001b[37mdid \u001b[31m" + attack + " damage \u001b[37mto \u001b[35m" + other.getName() + "!" + "\u001b[37m";
     }
 }
